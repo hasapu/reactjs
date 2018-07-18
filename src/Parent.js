@@ -5,8 +5,10 @@ import Child from './Child'
 class Parent extends React.Component {
   constructor() {
     super()
-    this.state = {texts: [], color:''}
+    this.state = {texts: [], color:'', counter:0}
     this.changeColor = this.changeColor.bind(this)
+    this.counterClick = this.counterClick.bind(this)
+    this.downClick = this.downClick.bind(this)
   }
 
   changeColor() {
@@ -18,6 +20,14 @@ class Parent extends React.Component {
 
   }
 
+  counterClick() {
+    this.setState({counter: this.state.counter+1})
+  }
+
+  downClick() {
+    this.setState({counter: this.state.counter-1})
+  }
+
   componentDidMount() {
     this.setState({texts: ['contoh state 1', 'contoh state 2', 'contoh state 3'], color:'red'})
   }
@@ -25,15 +35,15 @@ class Parent extends React.Component {
 
     let texts = this.state.texts.map(function(text){
       return (
-        <Child text={text} />
+        <Child text={text} counterClick={this.counterClick}/>
       )
-    })
+    }, this)
 
     let col = this.state.color
 
     return (
       <div id="parent" style={{color:col}} onClick={this.changeColor}>
-       <div>
+       <div onClick={this.downClick}>
         ini merupakan INDUK dari ANAK
         <br />
         <Child text="ini contoh properties 1"/>
@@ -45,6 +55,7 @@ class Parent extends React.Component {
        <div>
        ini coba untuk bikin react ya dibaris 2 menggunakan state
        {texts}
+       {this.state.counter}
        </div>
       </div>
     )
