@@ -33,11 +33,11 @@ class Parent extends React.Component {
   }
   render() {
 
-    let texts = this.state.texts.map(function(text){
+    let texts = this.state.texts.map((text) => {
       return (
         <Child text={text} counterClick={this.counterClick}/>
       )
-    }, this)
+    })
 
     let col = this.state.color
 
