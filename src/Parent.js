@@ -5,11 +5,21 @@ import Child from './Child'
 class Parent extends React.Component {
   constructor() {
     super()
-    this.state = {texts: []}
+    this.state = {texts: [], color:''}
+    this.changeColor = this.changeColor.bind(this)
+  }
+
+  changeColor() {
+    if(this.state.color==='red') {
+      this.setState({color:'blue'})
+    } else {
+      this.setState({color:'red'})
+    }
+
   }
 
   componentDidMount() {
-    this.setState({texts: ['contoh state 1', 'contoh state 2', 'contoh state 3']})
+    this.setState({texts: ['contoh state 1', 'contoh state 2', 'contoh state 3'], color:'red'})
   }
   render() {
 
@@ -19,8 +29,10 @@ class Parent extends React.Component {
       )
     })
 
+    let col = this.state.color
+
     return (
-      <div id="parent">
+      <div id="parent" style={{color:col}} onClick={this.changeColor}>
        <div>
         ini merupakan INDUK dari ANAK
         <br />
