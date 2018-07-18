@@ -5,11 +5,14 @@ import Child from './Child'
 class Parent extends React.Component {
   constructor() {
     super()
-    this.state = {texts: ['contoh state 1', 'contoh state 2', 'contoh state 3']}
+    this.state = {texts: []}
+  }
 
+  componentDidMount() {
+    this.setState({texts: ['contoh state 1', 'contoh state 2', 'contoh state 3']})
   }
   render() {
-  
+
     let texts = this.state.texts.map(function(text){
       return (
         <Child text={text} />
