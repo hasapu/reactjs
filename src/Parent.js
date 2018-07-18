@@ -9,7 +9,11 @@ class Parent extends React.Component {
        <div>
         ini merupakan INDUK dari ANAK
         <br />
-        <Child />
+        <Child text="ini contoh properties 1"/>
+        <br />
+        <Child text="ini contoh properties 2"/>
+        <br />
+        <Child text="ini contoh properties 3"/>
        </div>
        <div>ini coba untuk bikin react ya dibaris 2</div>
       </div>
